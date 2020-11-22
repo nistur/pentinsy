@@ -1,0 +1,7 @@
+#!/bin/bash
+APP=/Applications/meshlab.app
+pushd ${APP}/Contents/PlugIns
+
+${APP}/Contents/MacOS/meshlabserver $@
+
+popd

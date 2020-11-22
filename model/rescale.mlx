@@ -1,0 +1,17 @@
+<!DOCTYPE FilterScript>
+<FilterScript>
+ <filter name="Matrix: Set from translation/rotation/scale">
+  <Param tooltip="Translation factor on X axis" value="0" description="X Translation" name="translationX" type="RichFloat"/>
+  <Param tooltip="Translation factor on Y axis" value="0" description="Y Translation" name="translationY" type="RichFloat"/>
+  <Param tooltip="Translation factor on Z axis" value="0" description="Z Translation" name="translationZ" type="RichFloat"/>
+  <Param tooltip="Rotation angle on X axis" value="0" description="X Rotation" name="rotationX" type="RichFloat"/>
+  <Param tooltip="Rotation angle on Y axis" value="0" description="Y Rotation" name="rotationY" type="RichFloat"/>
+  <Param tooltip="Rotation angle on Z axis" value="0" description="Z Rotation" name="rotationZ" type="RichFloat"/>
+  <Param tooltip="Scaling factor on X axis" value="13.5" description="X Scale" name="scaleX" type="RichFloat"/>
+  <Param tooltip="Scaling factor on Y axis" value="13.5" description="Y Scale" name="scaleY" type="RichFloat"/>
+  <Param tooltip="Scaling factor on Z axis" value="13.5" description="Z Scale" name="scaleZ" type="RichFloat"/>
+  <Param tooltip="If selected, the new matrix will be composed with the current one (matrix=new*old)" value="false" description="Compose with current" name="compose" type="RichBool"/>
+  <Param tooltip="The transformation is explicitly applied, and the vertex coordinates are actually changed" value="true" description="Freeze Matrix" name="Freeze" type="RichBool"/>
+  <Param tooltip="If selected the filter will be applied to all visible mesh layers" value="false" description="Apply to all visible Layers" name="allLayers" type="RichBool"/>
+ </filter>
+</FilterScript>
