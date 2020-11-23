@@ -1,8 +1,8 @@
 module key_cutout()
 {
-//    translate([-10,-10,6.5]) cube([20,20,9.51]);
+    translate([-10,-10,6.5]) cube([20,20,9.51]);
 //    translate([-8,-8,5.5]) cube([16,16,2.51]);
-    translate([-7,-7,-0.01]) cube([14,14,14]);
+//    translate([-7,-7,-0.01]) cube([14,14,14]);
 }
 
 difference()

@@ -1,23 +1,29 @@
-bottom=5;
-overlap=1;
+bottom=5.5;
+overlap=1.5;
 
 module outer()
 {
-    difference()
+    intersection()
     {
-        import("keyboard_switches.stl");
-        import("keyboard_1.5shrink.stl");
-        translate([-100, -100, bottom]) cube([200, 200, 200]);
+        difference()
+        {
+            translate([-100, -100,-20]) cube([200, 200, 20+bottom]);
+            rotate(90, [1,0,0]) import("keyboard_1.5shrink.stl");
+        }
+        rotate(90, [1,0,0]) import("keyboard_scaled.stl");
     }
 }
 
 module inner()
 {
-    difference()
+    intersection()
     {
-        import("keyboard_1.5shrink.stl");
-        import("keyboard_2.5shrink.stl");
-        translate([-100, -100,bottom-overlap]) cube([200, 200, 200]);
+        difference()
+        {
+            translate([-100, -100,-20]) cube([200, 200, 20+bottom-overlap]);
+            rotate(90, [1,0,0]) import("keyboard_2.5shrink.stl");
+        }
+        rotate(90, [1,0,0]) import("keyboard_1.5shrink.stl");
     }
 }
 
