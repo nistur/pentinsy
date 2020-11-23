@@ -12,7 +12,11 @@ SILENT=>/dev/null
 
 .phony: all dir
 
-all: ${OUTDIR}keyboard_top.stl # keyboard_bottom_base.stl
+all: ${OUTDIR}keyboard_top.stl ${OUTDIR}controller_clip.stl # keyboard_bottom_base.stl
+
+${OUTDIR}controller_clip.stl : dir
+	@echo "Creating controller mounting clip"
+	@${SCAD} -o $@ 99-controllerclip.scad ${SILENT}
 
 ${OUTDIR}keyboard_top.stl : ${OBJDIR}keyboard_screwposts.stl ${OBJDIR}keyboard_top_switches.stl dir
 	@echo "Finalising top"

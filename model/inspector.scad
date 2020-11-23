@@ -21,3 +21,6 @@ translate([-210,300,0]) import("obj/keyboard_screwposts.stl");
 
 // Final output
 translate([0,450,0]) color("red") import("out/keyboard_top.stl");
+
+// Clip to hold in controller board
+translate([-120,450,0]) color("red") import("out/controller_clip.stl");

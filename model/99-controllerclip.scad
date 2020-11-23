@@ -1,0 +1,3 @@
+include <teensytray.scad>
+
+clip();
