@@ -3,20 +3,28 @@ PROJDIR=${CURDIR}
 OUTDIR=out/
 OBJDIR=obj/
 
-BASE_MODEL=${OBJDIR}keyboard_simplified.stl
-#BASE_MODEL=keyboard_scanned.obj
+DEBUG ?= 1
+ifeq ($(DEBUG), 1)
+	BASE_MODEL=${OBJDIR}keyboard_simplified.stl
+else
+	BASE_MODEL=keyboard_scanned.obj
+endif
 
 SCAD=/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD
 
-SILENT=>/dev/null
+SILENT=2>&1 >/dev/null
 
-.phony: all dir
+.phony: all dir clean debug
 
-all: ${OUTDIR}keyboard_top.stl ${OUTDIR}controller_clip.stl # keyboard_bottom_base.stl
+all: ${OUTDIR}keyboard_top.stl ${OUTDIR}controller_clip.stl ${OUTDIR}keyboard_bottom.stl
 
 ${OUTDIR}controller_clip.stl : dir
 	@echo "Creating controller mounting clip"
 	@${SCAD} -o $@ 99-controllerclip.scad ${SILENT}
+
+${OUTDIR}keyboard_bottom.stl : ${OBJDIR}keyboard_bottom_base.stl dir
+	@echo "Finalising bottom"
+	@${SCAD} -o $@ 10-feet.scad ${SILENT}
 
 ${OUTDIR}keyboard_top.stl : ${OBJDIR}keyboard_screwposts.stl ${OBJDIR}keyboard_top_switches.stl dir
 	@echo "Finalising top"
@@ -61,3 +69,7 @@ ${OBJDIR}keyboard_simplified.stl : keyboard_scanned.obj dir
 dir:
 	@mkdir -p ${OBJDIR} ${SILENT}
 	@mkdir -p ${OUTDIR} ${SILENT}
+
+clean:
+	@rm -rf ${OBJDIR} ${SILENT}
+	@rm -rf ${OUTDIR} ${SILENT}

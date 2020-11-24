@@ -10,6 +10,9 @@ translate([-210,-150,0])rotate(90, [1,0,0]) import("obj/keyboard_2.5shrink.stl")
 // Top shell
 import("obj/keyboard_top_base.stl");
 
+// Bottom shell
+translate([210,0,0]) import("obj/keyboard_bottom_base.stl");
+
 // Cutouts for keyswitches and USB cable
 translate([0,150,0]) import("obj/keyboard_top_cutout.stl");
 
@@ -21,6 +24,7 @@ translate([-210,300,0]) import("obj/keyboard_screwposts.stl");
 
 // Final output
 translate([0,450,0]) color("red") import("out/keyboard_top.stl");
+translate([210,450,0]) color("red") import("out/keyboard_bottom.stl");
 
 // Clip to hold in controller board
 translate([-120,450,0]) color("red") import("out/controller_clip.stl");

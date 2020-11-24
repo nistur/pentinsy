@@ -1,5 +1,4 @@
-bottom=5.5;
-overlap=1.5;
+include <layout.scad>
 
 module outer()
 {
@@ -7,10 +6,10 @@ module outer()
     {
         difference()
         {
-            translate([-100, -100,-20]) cube([200, 200, 20+bottom]);
-            rotate(90, [1,0,0]) import("keyboard_1.5shrink.stl");
+            translate([-100, -100,-20]) cube([200, 200, 20+bottom_height]);
+            rotate(90, [1,0,0]) import("obj/keyboard_1.5shrink.stl");
         }
-        rotate(90, [1,0,0]) import("keyboard_scaled.stl");
+        rotate(90, [1,0,0]) import("obj/keyboard_scaled.stl");
     }
 }
 
@@ -20,10 +19,10 @@ module inner()
     {
         difference()
         {
-            translate([-100, -100,-20]) cube([200, 200, 20+bottom-overlap]);
-            rotate(90, [1,0,0]) import("keyboard_2.5shrink.stl");
+            translate([-100, -100,-20]) cube([200, 200, 20+bottom_height-bottom_overlap]);
+            rotate(90, [1,0,0]) import("obj/keyboard_2.5shrink.stl");
         }
-        rotate(90, [1,0,0]) import("keyboard_1.5shrink.stl");
+        rotate(90, [1,0,0]) import("obj/keyboard_1.5shrink.stl");
     }
 }
 
