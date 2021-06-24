@@ -64,30 +64,36 @@ module bracing()
 
 module controllertray()
 {
-        translate(controller[0]) rotate(controller[1][0], [1,0,0]) rotate(controller[1][1], [0,1,0]) rotate(controller[1][2], [0,0,1]) color("gray") tray();
+    translate(controller[0]) rotate(controller[1][0], [1,0,0]) rotate(controller[1][1], [0,1,0]) rotate(controller[1][2], [0,0,1]) color("gray") tray();
     // TODO: Make supports for tray follow layout rules
-        translate([67,10,11]) rotate(-5,[0,0,1]) cube([40,1,50]);
-        translate([67,-9,11]) rotate(-5,[0,0,1]) cube([40,1,50]);
-}
-
-union()
-{
-    
-//import("keyboard_top_switches.stl");
-intersection()
-{
     difference()
     {
-        union()
-        {
-            allposts();
-            bracing();
-            controllertray();
-            
-        }
-        allholes();
+	union()
+	{
+	    translate([controller[0][0]-20.5,-12,11]) rotate(90-controller[1][2],[0,0,1]) cube([40,1,50]);
+	    translate([controller[0][0]-18,-30,11]) rotate(90-controller[1][2],[0,0,1]) cube([40,1,50]);
+	}
+	translate([controller[0][0]+20.5,-12,11]) rotate(90-controller[1][2],[0,0,1]) rotate(-30, [0,1,0]) color("red") translate([0,-20,0]) cube([40,40,200]);
     }
-    rotate(90,[1,0,0]) import("obj/keyboard_1.5shrink.stl");
-    
+	
 }
+union()
+{
+    import("obj/keyboard_top_switches.stl");   
+    intersection()
+    {
+        difference()
+        {
+            union()
+            {
+                allposts();
+                bracing();
+                controllertray();
+                
+            }
+            allholes();
+        }
+        rotate(90,[1,0,0]) import("obj/keyboard_1.5shrink.stl");
+        
+    }
 }
